@@ -1,0 +1,24 @@
+{
+    "name": "reactjs",
+    "version": "1.0.0",
+    "description": "My first React application",
+    "main": "index.js",
+    "dependencies": {
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "build": "webpack --mode=production"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DmitriyShisterov/ReactJS.git"
+    },
+    "author": "Dmitry Sh",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/DmitriyShisterov/ReactJS/issues"
+    },
+    "homepage": "https://github.com/DmitriyShisterov/ReactJS#readme"
+}
