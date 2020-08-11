@@ -1,10 +1,3 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v7.0.29,
-* Autoprefixer: v9.7.6
-* Browsers: last 4 version
-*/
-
 
 body {
     font-family: Arial;
@@ -147,11 +140,11 @@ input:focus, select:focus, fieldset:focus {
 .bookmark{
     height: 18px;
     width: 18px;
-    background: url(src/bookmark.svg);
+    background: url(./bookmark.png);
     background-size: cover;
 }
 .bookmark.checked {
-    background: url(src/bookmarkWhite.svg);
+    background: url(./bookmarkWhite.png);
     background-size: cover;
 }
 .eventTitle {

@@ -1,4 +1,7 @@
-function evling(params) {
+
+//import style from './styles.css';
+
+(function (params) {
     let evl = {};
     let requestOptions = {
         method: 'GET',
@@ -53,7 +56,6 @@ function evling(params) {
                 dateBookmark.append(dates, bookmark);
                 event.append(dateBookmark, eventTitle);
                 eventsWrap.append(event);
-                alert('work');
             }
         } else {
             let error = document.createElement('div');
@@ -137,5 +139,4 @@ function evling(params) {
             }
         })
     })
-};
-evling();
+})();
