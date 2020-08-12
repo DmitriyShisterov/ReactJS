@@ -1,7 +1,6 @@
 
-//import style from './styles.css';
-
-(function (params) {
+import styles from './styles.css';
+function evl(params) {
     let evl = {};
     let requestOptions = {
         method: 'GET',
@@ -23,7 +22,7 @@
 
     /*render*/
     function render(x) {
-        let eventsWrap = document.querySelector('#eventsWrap');
+        let eventsWrap = document.querySelector('.eventsWrap');
         if (eventsWrap.childElementCount != 0) {
             eventsWrap.innerHTML = '';
         }
@@ -34,24 +33,24 @@
                 let img = x[i].image;
 
                 let event = document.createElement('div');
-                event.className = 'event';
+                event.className = styles.event;
                 event.style.backgroundImage = `url(${img})`;
                 console.log()
 
                 let dateBookmark = document.createElement('div');
-                dateBookmark.className = 'dateBookmark';
+                dateBookmark.className = styles.dateBookmark;
 
                 let dates = document.createElement('div');
-                dates.className = 'date';
-                date = fullDate.slice(0, 2);
-                dates.innerText = date;
+                dates.className = styles.date;
+                let date = fullDate.slice(0, 2);
+                dates.innerHTML = date;
 
                 let bookmark = document.createElement('div');
-                bookmark.className = 'bookmark';
+                bookmark.className = styles.bookmark;
 
                 let eventTitle = document.createElement('div');
-                eventTitle.className = 'eventTitle';
-                eventTitle.innerText = name;
+                eventTitle.className = styles.eventTitle;
+                eventTitle.innerHTML = name;
 
                 dateBookmark.append(dates, bookmark);
                 event.append(dateBookmark, eventTitle);
@@ -59,23 +58,23 @@
             }
         } else {
             let error = document.createElement('div');
-            error.className = 'event';
-            error.classList.add('error');
+            error.className = styles.event;
+            error.classList.add(styles.error);
             error.style.border = '1px solid #444';
             error.style.borderRadius = '6px';
             error.innerHTML = 'По указанным параметрам событий не найдено. <br>Попробуйте повторить поиск с другими параметрами.';
             eventsWrap.append(error);
         }
     }
-
+    /*favorite toggler*/
     eventsWrap.onclick = function (event) {
-        let bk = event.target.closest('.bookmark');
-        if (!bk) return;
-        if (!eventsWrap.contains(bk)) return;
-        if (!bk.classList.contains('checked')) {
-            bk.classList.toggle('checked', true)
-        } else {
-            bk.classList.toggle('checked', false);
+        let target = event.target;
+        if (target.className === styles.bookmark) {
+            if (!target.classList.contains(styles.checked)) {
+                target.classList.toggle(styles.checked, true)
+            } else {
+                target.classList.toggle(styles.checked, false);
+            }
         }
     };
 
@@ -85,19 +84,21 @@
     }
     let newEvl = [];
     let sortEvl = [];
+
     let selects = document.querySelectorAll('select');
+    console.log(selects);
     selects.forEach(function (select, i, selects) {
         select.addEventListener('change', function (event) {
             let value = select.value;
-            if (event.target.className === 'city') {
+            if (event.target.className === styles.city) {
                 filter.city = select.value;
-            } else if (event.target.className === 'month') {
+            } else if (event.target.className === styles.month) {
                 filter.month = select.value;
             }
             if (filter.city && filter.month) {
                 sortEvl = [];
                 let found = 0;
-                let message = 'Событий не найдено, попробуйте поискать по другим параметрам.'
+                //let message = 'Событий не найдено, попробуйте поискать по другим параметрам.'
                 evl.forEach(function (evt, i, evl) {
                     let month;
                     month = evt.date.slice(3, 5)
@@ -127,7 +128,7 @@
                 newEvl = [];
                 evl.forEach(function (evt, i, evl) {
                     let month;
-                    if (event.target.className === 'month') {
+                    if (event.target.className === styles.month) {
                         month = evt.date.slice(3, 5)
                     }
                     if (evt.city === value || month === value) {
@@ -139,4 +140,6 @@
             }
         })
     })
-})();
+};
+
+evl();

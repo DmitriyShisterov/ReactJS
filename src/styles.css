@@ -143,7 +143,7 @@ input:focus, select:focus, fieldset:focus {
     background: url(./bookmark.png);
     background-size: cover;
 }
-.bookmark.checked {
+.checked {
     background: url(./bookmarkWhite.png);
     background-size: cover;
 }

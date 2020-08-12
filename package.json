@@ -4,6 +4,7 @@
     "description": "My first React application",
     "main": "index.js",
     "dependencies": {
+        "html-loader": "^1.1.0",
         "webpack": "^4.44.1",
         "webpack-cli": "^3.3.12"
     },
