@@ -1,12 +1,16 @@
 const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-module.exports = {
-    entry: './src/index.js',
+module.exports = (env, argv) => ({
+    entry: './src/index.jsx',
     output: {
         filename: 'main.js',
         path: path.join(__dirname, 'dist'),
     },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+    },
+    devtool: argv.mode === 'production' ? 'hidden-source-map' : 'source-map',
     plugins: [
         new HtmlPlugin({
             template: './src/index.html',
@@ -16,6 +20,11 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loader: "babel-loader"
+            },
+            {
                 test: /\.css$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
@@ -24,7 +33,8 @@ module.exports = {
                         options: {
                             modules: true
                         }
-                    }
+                    },
+                    'postcss-loader'
                 ]
             },
             {
@@ -41,4 +51,4 @@ module.exports = {
         contentBase: path.join(__dirname, 'dist'),
         port: 9000
     }
-}
+});
