@@ -111,8 +111,9 @@ input:focus, select:focus, fieldset:focus {
     font-weight: normal;
     font-size: 48px;
     color: #fff;
-    text-align: center;
-    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .dateBookmark {
     display: flex;
